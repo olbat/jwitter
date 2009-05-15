@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : Header
+    Created on : 15 mai 2009, 15:57:21
+    Author     : cygan0031
+-->
+
+<div xmlns:f="http://java.sun.com/jsf/core" >
+  <f:subview id="Header">
+      <div id="header">
+          <h1><span style="font-weight: bold">Jwitter</span> : Jwitting gives pleasure!</h1>
+      </div>
+  </f:subview>
+</div>
