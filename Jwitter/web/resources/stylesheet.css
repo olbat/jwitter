@@ -73,7 +73,7 @@ html, body {
 
 body {
   font: small/150% Arial, Helvetica, Verdana, sans-serif;
-  background-color: #9cdfe2;
+  background: url(hubert_cumberdale-background.png) bottom right no-repeat #9cdfe2;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -92,10 +92,48 @@ div#header {
   height: 80px;
 }
 
+div#header img {
+    padding-right:8px;
+    padding-top:2px;
+    float:right;
+}
+
+div#header p {
+    margin-right:2px;
+    margin-top: 8px;
+    float:right;
+    -moz-border-radius:32px;
+    border: 1px solid #999;
+    padding: 4px 7px;
+    font-family: Georgia, sans-serif;
+    font-style: italic;
+}
+
+div#header p.headerbubble1 {
+    margin-top: 24px;
+    float:right;
+    -moz-border-radius:10px;
+    border: 1px solid #999;
+    padding: 4px;
+}
+
+div#header p.headerbubble2 {
+    margin-top: 32px;
+    float:right;
+    -moz-border-radius:10px;
+    border: 1px solid #999;
+    padding: 1px;
+}
+
 div#header h1 {
     margin: 0;
     padding: 20px;
     font-weight: normal;
     font-family: Arial;
     font-size: 24px;
+    float:left;
+}
+
+div#header h1 sub {
+    font-size: 12px;
 }

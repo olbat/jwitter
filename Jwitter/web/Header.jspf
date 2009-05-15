@@ -4,11 +4,17 @@
     Created on : 15 mai 2009, 15:57:21
     Author     : cygan0031
 -->
+<div xmlns:f="http://java.sun.com/jsf/core" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
+    <f:subview id="Header">
+        <div id="header">
+            <h1>
+                <span style="font-weight: bold">Jwitter</span>
+                <sub> jwitting gives pleasure!</sub>
+            </h1>
+            <img src="resources/salad_fingers.png" alt="hubert"/>
+            <p class="headerbubble2"></p><p class="headerbubble1"></p>
+            <p>I like to jwitt !</p>
+        </div>
 
-<div xmlns:f="http://java.sun.com/jsf/core" >
-  <f:subview id="Header">
-      <div id="header">
-          <h1><span style="font-weight: bold">Jwitter</span> : Jwitting gives pleasure!</h1>
-      </div>
-  </f:subview>
+    </f:subview>
 </div>
