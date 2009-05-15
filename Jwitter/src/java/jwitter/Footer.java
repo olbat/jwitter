@@ -1,7 +1,7 @@
 /*
- * Header.java
+ * Footer.java
  *
- * Created on 15 mai 2009, 15:57:21
+ * Created on 15 mai 2009, 17:34:54
  */
  
 package jwitter;
@@ -18,7 +18,7 @@ import javax.faces.FacesException;
  *
  * @author cygan0031
  */
-public class Header extends AbstractFragmentBean {
+public class Footer extends AbstractFragmentBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -30,7 +30,7 @@ public class Header extends AbstractFragmentBean {
     }
     // </editor-fold>
 
-    public Header() {
+    public Footer() {
     }
 
     /**
@@ -83,15 +83,6 @@ public class Header extends AbstractFragmentBean {
      *
      * @return reference to the scoped data bean
      */
-    protected ApplicationBean1 getApplicationBean1() {
-        return (ApplicationBean1) getBean("ApplicationBean1");
-    }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
     protected RequestBean1 getRequestBean1() {
         return (RequestBean1) getBean("RequestBean1");
     }
@@ -105,10 +96,13 @@ public class Header extends AbstractFragmentBean {
         return (SessionBean1) getBean("SessionBean1");
     }
 
-    public String hyperlink1_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return null;
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected ApplicationBean1 getApplicationBean1() {
+        return (ApplicationBean1) getBean("ApplicationBean1");
     }
 
 }

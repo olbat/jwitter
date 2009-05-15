@@ -31,4 +31,9 @@
         <managed-bean-class>jwitter.Home</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Footer</managed-bean-name>
+        <managed-bean-class>jwitter.Footer</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

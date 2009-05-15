@@ -80,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Arial, Verdana, sans-serif;
 }
 
-hr, div.clr {
+hr, div.clr, div.stopfloat {
   clear: both;
   visibility: hidden;
 }
@@ -98,18 +98,16 @@ div#header img {
     float:right;
 }
 
-div#header p {
+div#header p.headerbubble {
     margin-right:2px;
     margin-top: 8px;
     float:right;
     -moz-border-radius:32px;
     border: 1px solid #999;
     padding: 4px 7px;
-    font-family: Georgia, sans-serif;
-    font-style: italic;
 }
 
-div#header p.headerbubble1 {
+div#header p.headerbubble.headerbubble1 {
     margin-top: 24px;
     float:right;
     -moz-border-radius:10px;
@@ -117,7 +115,7 @@ div#header p.headerbubble1 {
     padding: 4px;
 }
 
-div#header p.headerbubble2 {
+div#header p.headerbubble.headerbubble2 {
     margin-top: 32px;
     float:right;
     -moz-border-radius:10px;
@@ -130,10 +128,62 @@ div#header h1 {
     padding: 20px;
     font-weight: normal;
     font-family: Arial;
-    font-size: 24px;
-    float:left;
+    font-size: 12px;
+    float: left;
 }
 
-div#header h1 sub {
-    font-size: 12px;
+div#header h1 span {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+p#menu {
+    margin: 0;
+    float: menu;
+    line-height: 65px;
+    height: 65px;
+}
+
+p#menu a {
+    display: block;
+    float: left;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+/* footer */
+
+div#footer {
+  clear: both;
+}
+
+div#footer, div#footer a {
+  color: #111;
+}
+
+div#footer p {
+  padding: 1em;
+  font-size: 1em;
+  text-align: center;
+}
+
+div#footer p span {
+  font-size: 0.8em;
+  color: #333;
+}
+
+/* box */
+
+div.roundbox {
+  background: #fbfefe;
+  -moz-border-radius: 10px;
+  padding: 10px;
+  border-top: 1px solid #74b4c0;
+  border-right: 2px solid #74b4c0;
+  border-bottom: 3px solid #74b4c0;
+  border-left: 1px solid #74b4c0;
+}
+
+div.roundbox#page_content {
+    margin: 20px 150px 10px 25px;
 }

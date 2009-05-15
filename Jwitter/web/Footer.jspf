@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : Footer
+    Created on : 15 mai 2009, 17:34:53
+    Author     : cygan0031
+-->
+
+<div xmlns:f="http://java.sun.com/jsf/core" >
+  <f:subview id="Footer">
+      <div id="footer">
+        <p>
+            Réalisé par les 3 mousquetaires : Morgan, Luc, Jessy et Rémi.
+            <br /><span>Copyleft © 2009 Jwitter. Aucun Droits Réservés.</span>
+        </p>
+       </div>
+  </f:subview>
+</div>
