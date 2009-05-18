@@ -43,6 +43,7 @@ public class UserDAO {
             return false;
         }
     }
+
     public boolean deleteUser(User u) {
         try {
             String s = "DELETE FROM APP.USERS WHERE login = '" + u.getUsername() + "'";
@@ -55,12 +56,34 @@ public class UserDAO {
             return false;
         }
     }
-    public User findUser(String login) {
+
+    public User findUser(String username) {
+        try {
+            String s = "SELECT * FROM APP.USERS WHERE username = '" + username + "'";
+            PreparedStatement ps = connection.prepareStatement(s);
+            ps.execute();
+            ArrayList<User> al = new ArrayList<User>();
+            ResultSet rs = ps.getResultSet();
+            
+            if(rs.next()) {
+                User u = new User(rs.getString("username"), rs.getString("password"));
+                u.setRank(Integer.parseInt(rs.getString("rank")));
+                u.setId(Integer.parseInt(rs.getString("id")));
+                return u;
+            }
+            return null;
+        } catch (SQLException ex) {
+            ex.getMessage();
+            ex.printStackTrace();
+        }
+
         return null;
     }
+
     public boolean updateUser(User u) {
         return true;
     }
+    
     public Collection allUsers() {
         try {
             String s = "SELECT * FROM APP.USERS";

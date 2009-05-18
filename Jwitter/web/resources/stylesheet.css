@@ -185,7 +185,7 @@ div#footer p span {
 
 /* box */
 
-div.roundbox {
+div.roundbox, div.flash_message {
   background: #fbfefe;
   -moz-border-radius: 10px;
   padding: 10px;
@@ -195,6 +195,19 @@ div.roundbox {
   border-left: 1px solid #74b4c0;
 }
 
-div.roundbox#page_content {
+div.roundbox#page_content, div.flash_message {
     margin: 20px 150px 10px 25px;
+}
+
+div.flash_message {
+    border: none;
+    color: green;
+}
+
+div.flash_message.error {
+    color: red;
+}
+
+div.flash_message.notice {
+    color: #555;
 }

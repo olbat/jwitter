@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-    Document   : Signup
-    Created on : 18 mai 2009, 12:19:01
+    Document   : Signin
+    Created on : 18 mai 2009, 16:04:09
     Author     : cygan0031
 -->
 <jsp:root version="2.1" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
@@ -16,7 +16,7 @@
                     <webuijsf:form id="Formulaire">
                         <jsp:directive.include file="Header.jspf"/>
                         <div class="roundbox" id="page_content">
-                            <h2>Signup</h2>
+                            <h2>Signin</h2>
                             <p>
                                 <webuijsf:messageGroup id="messageGroup1"/>
                             </p>
@@ -29,7 +29,7 @@
                                 <webuijsf:passwordField id="password" password="#{UserBean.password}" required="true"/>
                             </p>
                             <p>
-                                <webuijsf:button actionExpression="#{Signup.submit_button_action}" id="submit_button" text="Signup"/>
+                                <webuijsf:button actionExpression="#{Signin.submit_button_action}" id="submit_button" text="Signin"/>
                             </p>
                         </div>
                         <jsp:directive.include file="Footer.jspf"/>

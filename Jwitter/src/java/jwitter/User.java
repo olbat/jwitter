@@ -50,10 +50,32 @@ public class User {
         this.rank = rank;
     }
 
-    public void save() {
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean populate() {
+        UserDAO udao = new UserDAO();
+        User u = udao.findUser(this.username);
+        if(u != null) {
+            this.id = u.id;
+            this.username = u.username;
+            this.password = u.password;
+            this.rank = u.rank;
+        }
+        return u != null;
+    }
+
+    public boolean save() {
         if(this.id == 0) {
             UserDAO udao = new UserDAO();
-            udao.insertUser(this);
+            return udao.insertUser(this);
+        } else {
+            return false;
         }
     }
 }

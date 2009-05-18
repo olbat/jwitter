@@ -41,4 +41,34 @@
         <managed-bean-class>jwitter.Signup</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <navigation-rule>
+        <from-view-id>/Signup.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>signup_valid</from-outcome>
+            <to-view-id>/Home.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>Signin</managed-bean-name>
+        <managed-bean-class>jwitter.Signin</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/Signin.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>signin_valid</from-outcome>
+            <to-view-id>/Home.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/Home.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>signout</from-outcome>
+            <to-view-id>/Home.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>go_home</from-outcome>
+            <to-view-id>/Home.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
