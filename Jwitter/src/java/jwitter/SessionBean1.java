@@ -7,6 +7,7 @@
 package jwitter;
 
 import com.sun.rave.web.ui.appbase.AbstractSessionBean;
+import com.sun.sql.rowset.CachedRowSetXImpl;
 import javax.faces.FacesException;
 
 /**
@@ -30,6 +31,30 @@ public class SessionBean1 extends AbstractSessionBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        usersRowSet.setDataSourceName("java:comp/env/jdbc/APP_ApacheDerby");
+        usersRowSet.setCommand("SELECT * FROM APP.USERS");
+        usersRowSet.setTableName("USERS");
+        usersRowSet1.setDataSourceName("java:comp/env/jdbc/ROOT_ApacheDerby");
+        usersRowSet1.setCommand("SELECT * FROM ROOT.USERS");
+        usersRowSet1.setTableName("USERS");
+    }
+    private CachedRowSetXImpl usersRowSet = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getUsersRowSet() {
+        return usersRowSet;
+    }
+
+    public void setUsersRowSet(CachedRowSetXImpl crsxi) {
+        this.usersRowSet = crsxi;
+    }
+    private CachedRowSetXImpl usersRowSet1 = new CachedRowSetXImpl();
+
+    public CachedRowSetXImpl getUsersRowSet1() {
+        return usersRowSet1;
+    }
+
+    public void setUsersRowSet1(CachedRowSetXImpl crsxi) {
+        this.usersRowSet1 = crsxi;
     }
     // </editor-fold>
 

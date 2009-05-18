@@ -139,7 +139,7 @@ div#header h1 span {
 
 p#menu {
     margin: 0;
-    float: menu;
+    float: left;
     line-height: 65px;
     height: 65px;
 }
