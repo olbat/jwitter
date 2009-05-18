@@ -31,15 +31,6 @@ public class Admin extends AbstractPageBean {
      */
     private void _init() throws Exception {
     }
-    private Hyperlink hyperlink1 = new Hyperlink();
-
-    public Hyperlink getHyperlink1() {
-        return hyperlink1;
-    }
-
-    public void setHyperlink1(Hyperlink h) {
-        this.hyperlink1 = h;
-    }
 
     // </editor-fold>
 
@@ -147,6 +138,5 @@ public class Admin extends AbstractPageBean {
     protected UserBean getUserBean() {
         return (UserBean) getBean("UserBean");
     }
-    
 }
 

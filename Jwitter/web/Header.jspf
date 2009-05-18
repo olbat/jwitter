@@ -18,14 +18,14 @@
             </h1>
             <img alt="spoon" id="headerspoon" src="resources/spoon.png"/>
             <p id="menu">
-                <webuijsf:hyperlink actionExpression="#{Header.link_home_action}" id="link_home" text="Home"/>
+                <webuijsf:hyperlink actionExpression="#{Header.link_home_action}" id="link_home" text="Home" url="/faces/Home.jsp"/>
                 <jsp:scriptlet>if(request.getSession().getAttribute("user") == null) {</jsp:scriptlet>
                 <webuijsf:hyperlink actionExpression="#{Header.link_login_action}" id="link_login" text="Signin" url="/faces/Signin.jsp"/>
                 <webuijsf:hyperlink actionExpression="#{Header.link_join_twitter_action}" id="link_join_twitter" text="Join Jwitter!" url="/faces/Signup.jsp"/>
                 <jsp:scriptlet>} else {</jsp:scriptlet>
-                <webuijsf:hyperlink actionExpression="#{Header.link_profile_action}" id="link_profile" text="Profile"/>
-                <webuijsf:hyperlink actionExpression="#{Header.link_settings_action}" id="link_settings" text="Settings"/>
-                <webuijsf:hyperlink actionExpression="#{Header.link_signout_action}" id="link_signout" text="Signout"/>
+                <webuijsf:hyperlink actionExpression="#{Header.link_profile_action}" id="link_profile" text="Profile" url="/faces/Profile.jsp"/>
+                <webuijsf:hyperlink actionExpression="#{Header.link_settings_action}" id="link_settings" text="Settings" url="/faces/Settings.jsp"/>
+                <webuijsf:hyperlink actionExpression="#{Header.link_signout_action}" id="link_signout" text="Signout" />
                 <jsp:scriptlet>if(((User)request.getSession().getAttribute("user")).isAdmin()) {</jsp:scriptlet>
                 <webuijsf:hyperlink actionExpression="#{Header.link_admin_action}" id="link_admin" text="Admin" url="/faces/Admin.jsp"/>
                 <jsp:scriptlet>}</jsp:scriptlet>

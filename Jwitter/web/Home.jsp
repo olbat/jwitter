@@ -22,10 +22,10 @@
                             <jsp:scriptlet>} else {</jsp:scriptlet>
                             <h2>What the hell do you want to jwitt ?
                             </h2>
-                            <webuijsf:textField columns="140" id="content" labelLevel="1" maxLength="140" required="true" style="font-size: 16px; padding: 5px"/>
+                            <webuijsf:textField columns="140" id="content" labelLevel="1" maxLength="140" style="font-size: 16px; padding: 5px"/>
                             <br/>
                             <div style="text-align: right; padding: 10px">
-                                <webuijsf:button id="button_update" style="padding: 5px;" text="update"/>
+                                <webuijsf:button actionExpression="#{Home.button_update_action}" id="button_update" style="padding: 5px;" text="update"/>
                             </div>
                             <jsp:scriptlet>}</jsp:scriptlet>
                         </div>

@@ -120,13 +120,13 @@ public class Header extends AbstractFragmentBean {
     public String link_join_twitter_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        return "signup_valid";
+        return null;
     }
 
     public String link_home_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        return "go_home";
+        return null;
     }
 
     public String link_profile_action() {
@@ -143,11 +143,17 @@ public class Header extends AbstractFragmentBean {
 
     public String link_signout_action() {
         User u = (User) this.getSessionMap().remove("user");
+        this.getSessionMap().clear();
         if(u != null) {
             this.getSessionMap().put("message_notice", "Goodbye my friend :)");
         }
         
         return "signout";
+    }
+
+    public String link_admin_action() {
+        // TODO: Replace with your code
+        return null;
     }
 
 }

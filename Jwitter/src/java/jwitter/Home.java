@@ -136,6 +136,12 @@ public class Home extends AbstractPageBean {
     protected SessionBean1 getSessionBean1() {
         return (SessionBean1) getBean("SessionBean1");
     }
+
+    public String button_update_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
     
 }
 
