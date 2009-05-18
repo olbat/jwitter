@@ -13,10 +13,7 @@
             <p class="headerbubble">
                 <jsp:scriptlet>out.println(Quote.getRandomQuote());</jsp:scriptlet>
             </p>
-            <h1>
-                <span>Jwitter</span>
-            </h1>
-            <img alt="spoon" id="headerspoon" src="resources/spoon.png"/>
+            <a href="faces/Home.jsp"><img alt="logo" id="headerlogo" src="resources/jwitter-logo.png"/></a>
             <p id="menu">
                 <webuijsf:hyperlink actionExpression="#{Header.link_home_action}" id="link_home" text="Home" url="/faces/Home.jsp"/>
                 <jsp:scriptlet>if(request.getSession().getAttribute("user") == null) {</jsp:scriptlet>
