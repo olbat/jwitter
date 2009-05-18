@@ -37,24 +37,56 @@ public class UserDAO {
             PreparedStatement ps = connection.prepareStatement(s);
             ps.execute();
             ps.close();
+            UserDAO.connection.close();
             return true;
         } catch (SQLException ex) {
             ex.getMessage();
             ex.printStackTrace();
+            try {
+                UserDAO.connection.close();
+            } catch (SQLException ex1) {
+                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex1);
+            }
             return false;
         }
     }
 
     public boolean deleteUser(User u) {
         try {
-            String s = "DELETE FROM APP.USERS WHERE login = '" + u.getUsername() + "'";
+            String s = "DELETE FROM APP.USERS WHERE id = " + u.getId();
             PreparedStatement ps = connection.prepareStatement(s);
             ps.execute();
             ps.close();
+            UserDAO.connection.close();
             return true;
         } catch (SQLException ex) {
             ex.getMessage();
             ex.printStackTrace();
+            try {
+                UserDAO.connection.close();
+            } catch (SQLException ex1) {
+                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            return false;
+        }
+    }
+
+    public boolean changeUserGrade(User u, boolean upgrade) {
+        try {
+            String s = "UPDATE APP.USERS SET rank = " + (upgrade ? User.RANK_ADMIN : User.RANK_USER) + " WHERE id = " + u.getId();
+            PreparedStatement ps = connection.prepareStatement(s);
+            ps.execute();
+            ps.close();
+            UserDAO.connection.close();
+            return true;
+        } catch (SQLException ex) {
+            ex.getMessage();
+            ex.printStackTrace();
+            try {
+                UserDAO.connection.close();
+            } catch (SQLException ex1) {
+                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex1);
+            }
             return false;
         }
     }
@@ -76,17 +108,16 @@ public class UserDAO {
 
             rs.close();
             ps.close();
-            return null;
         } catch (SQLException ex) {
             ex.getMessage();
             ex.printStackTrace();
         }
-
+        try {
+            UserDAO.connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return null;
-    }
-
-    public boolean updateUser(User u) {
-        return true;
     }
     
     public Collection allUsers() {
@@ -105,12 +136,17 @@ public class UserDAO {
 
             rs.close();
             ps.close();
+            UserDAO.connection.close();
             return al;
         } catch (SQLException ex) {
             ex.getMessage();
             ex.printStackTrace();
+            try {
+                UserDAO.connection.close();
+            } catch (SQLException ex1) {
+                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            return null;
         }
-
-        return null;
     }
 }

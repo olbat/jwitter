@@ -25,6 +25,7 @@
                                 <tr>
                                     <th class="num">#</th>
                                     <th>Username</th>
+                                    <th>Rank</th>
                                     <th></th>
                                 </tr>
                                 <jsp:scriptlet>int i = 1;</jsp:scriptlet>
@@ -37,7 +38,21 @@
                                             <c:out value="${u.username}"/>
                                         </td>
                                         <td>
-                                            <webuijsf:hyperlink id="hyperlink2" text="delete" url="/faces/DeleteUser.jsp?id=#{u.id}"/>
+                                            <c:if test="${u.rank == 0}">
+                                                user (<webuijsf:hyperlink id="link_upgrade" text="upgrade to admin" actionExpression="#{Admin.link_upgrade_action}">
+                                                <f:param name="id" value="#{u.id}" />
+                                            </webuijsf:hyperlink>)
+                                            </c:if>
+                                            <c:if test="${u.rank != 0}">
+                                                admin (<webuijsf:hyperlink id="link_downgrade" text="downgrade to user" actionExpression="#{Admin.link_downgrade_action}">
+                                                <f:param name="id" value="#{u.id}" />
+                                            </webuijsf:hyperlink>)
+                                            </c:if>
+                                        </td>
+                                        <td>
+                                            <webuijsf:hyperlink id="link_delete" text="delete" actionExpression="#{Admin.link_delete_action}">
+                                                <f:param name="id" value="#{u.id}" />
+                                            </webuijsf:hyperlink>
                                         </td>
                                     </tr>
                                 </c:forEach>

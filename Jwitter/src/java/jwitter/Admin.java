@@ -138,5 +138,32 @@ public class Admin extends AbstractPageBean {
     protected UserBean getUserBean() {
         return (UserBean) getBean("UserBean");
     }
+
+    public String link_delete_action() {
+        User u = new User(Integer.parseInt(this.getFacesContext().getExternalContext().getRequestParameterMap().get("id")));
+
+        if(u.delete())
+            this.getSessionMap().put("message_valid", "User deleted!");
+
+        return null;
+    }
+
+    public String link_upgrade_action() {
+        User u = new User(Integer.parseInt(this.getFacesContext().getExternalContext().getRequestParameterMap().get("id")));
+
+        if(u.upgrade())
+            this.getSessionMap().put("message_valid", "User upgraded!");
+
+        return null;
+    }
+
+    public String link_downgrade_action() {
+        User u = new User(Integer.parseInt(this.getFacesContext().getExternalContext().getRequestParameterMap().get("id")));
+        
+        if(u.downgrade())
+            this.getSessionMap().put("message_valid", "User downgraded!");
+
+        return null;
+    }
 }
 

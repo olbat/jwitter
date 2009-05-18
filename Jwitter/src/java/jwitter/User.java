@@ -16,6 +16,10 @@ public class User {
     public final static int RANK_USER = 0;
     public final static int RANK_ADMIN = 1;
 
+    public String rankToString() {
+        return this.isAdmin() ? "admin" : "user";
+    }
+
     public boolean isAdmin() {
         return this.rank == User.RANK_ADMIN;
     }
@@ -24,15 +28,19 @@ public class User {
         return this.rank == User.RANK_USER;
     }
 
+    public User(int id) {
+        this.id = id;
+        this.rank = User.RANK_USER;
+    }
+
     public User(String username, String password) {
         this(username, password, User.RANK_USER);
     }
 
     public User(String username, String password, int rank) {
-        this.id = 0;
+        this(0);
         this.username = username;
         this.password = password;
-        this.rank = rank;
     }
 
     public String getUsername() {
@@ -77,6 +85,21 @@ public class User {
             this.rank = u.rank;
         }
         return u != null;
+    }
+
+    public boolean upgrade() {
+        UserDAO udao = new UserDAO();
+        return udao.changeUserGrade(this, true);
+    }
+
+    public boolean downgrade() {
+        UserDAO udao = new UserDAO();
+        return udao.changeUserGrade(this, false);
+    }
+
+    public boolean delete() {
+        UserDAO udao = new UserDAO();
+        return udao.deleteUser(this);
     }
 
     public boolean save() {
