@@ -4,22 +4,23 @@
     Created on : 15 mai 2009, 15:57:21
     Author     : cygan0031
 -->
-
 <div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:f="http://java.sun.com/jsf/core" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
     <f:subview id="Header">
         <div id="header">
-            <img src="resources/salad_fingers.png" alt="hubert"/>
-            <p class="headerbubble headerbubble2"></p><p class="headerbubble headerbubble1"></p>
+            <img alt="hubert" src="resources/salad_fingers.png"/>
+            <p class="headerbubble headerbubble2"></p>
+            <p class="headerbubble headerbubble1"></p>
             <p class="headerbubble"><jsp:scriptlet>out.println(Quote.getRandomQuote());</jsp:scriptlet></p>
-            
-            <h1><span>Jwitter</span></h1>
+            <h1>
+                <span>Jwitter</span>
+            </h1>
             <p id="menu">
-                <webuijsf:hyperlink id="link_login" text="Signin"/>
-                <webuijsf:hyperlink id="link_join_twitter" text="Join Jwitter!"/>
-                <webuijsf:hyperlink id="link_home" text="Home"/>
-                <webuijsf:hyperlink id="link_profile" text="Profile"/>
-                <webuijsf:hyperlink id="link_settings" text="Settings"/>
-                <webuijsf:hyperlink id="link_signout" text="Signout"/>
+                <webuijsf:hyperlink actionExpression="#{Header.link_login_action}" id="link_login" text="Signin"/>
+                <webuijsf:hyperlink actionExpression="#{Header.link_join_twitter_action}" id="link_join_twitter" text="Join Jwitter!" url="/faces/Signup.jsp"/>
+                <webuijsf:hyperlink actionExpression="#{Header.link_home_action}" id="link_home" text="Home"/>
+                <webuijsf:hyperlink actionExpression="#{Header.link_profile_action}" id="link_profile" text="Profile"/>
+                <webuijsf:hyperlink actionExpression="#{Header.link_settings_action}" id="link_settings" text="Settings"/>
+                <webuijsf:hyperlink actionExpression="#{Header.link_signout_action}" id="link_signout" text="Signout"/>
             </p>
         </div>
     </f:subview>

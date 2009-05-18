@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    Document   : Home
-    Created on : 15 mai 2009, 16:26:30
+<!-- 
+    Document   : Signup
+    Created on : 18 mai 2009, 12:19:01
     Author     : cygan0031
 -->
 <jsp:root version="2.1" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
-    <jsp:directive.page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" import="jwitter.Quote"/>
+    <jsp:directive.page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"/>
     <f:view>
         <webuijsf:page id="page1">
             <webuijsf:html id="html1">
@@ -16,7 +16,18 @@
                     <webuijsf:form id="form1">
                         <jsp:directive.include file="Header.jspf"/>
                         <div class="roundbox" id="page_content">
-                            Hello there my little friend :)
+                            <h2>Signup</h2>
+                            <p>
+                                Username :<br/>
+                                <webuijsf:textField id="username" text="#{UserBean.username}"/>
+                            </p>
+                            <p>
+                                Password :<br/>
+                                <webuijsf:textField id="password" text="#{UserBean.password}"/>
+                            </p>
+                            <p>
+                                <webuijsf:button actionExpression="#{Signup.submit_button_action}" id="submit_button" text="Submit"/>
+                            </p>
                         </div>
                         <jsp:directive.include file="Footer.jspf"/>
                     </webuijsf:form>

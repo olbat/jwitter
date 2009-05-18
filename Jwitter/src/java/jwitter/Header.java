@@ -92,8 +92,8 @@ public class Header extends AbstractFragmentBean {
      *
      * @return reference to the scoped data bean
      */
-    protected RequestBean1 getRequestBean1() {
-        return (RequestBean1) getBean("RequestBean1");
+    protected UserBean getUserBean() {
+        return (UserBean) getBean("UserBean");
     }
 
     /**
@@ -106,6 +106,42 @@ public class Header extends AbstractFragmentBean {
     }
 
     public String hyperlink1_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String link_login_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String link_join_twitter_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return "case1";
+    }
+
+    public String link_home_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String link_profile_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String link_settings_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String link_signout_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
         return null;

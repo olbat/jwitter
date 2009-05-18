@@ -1,18 +1,12 @@
 /*
- * Home.java
- *
- * Created on 15 mai 2009, 16:26:30
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
  */
- 
+
 package jwitter;
 
-import com.sun.data.provider.impl.CachedRowSetDataProvider;
-import com.sun.data.provider.impl.ListDataProvider;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.webui.jsf.model.DefaultTableDataProvider;
-import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
-import javax.faces.convert.IntegerConverter;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -21,9 +15,12 @@ import javax.faces.convert.IntegerConverter;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
+ * @version Signup.java
+ * @version Created on 18 mai 2009, 12:19:02
  * @author cygan0031
  */
-public class Home extends AbstractPageBean {
+
+public class Signup extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -32,55 +29,6 @@ public class Home extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        usersDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.usersRowSet}"));
-        usersDataProvider1.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.usersRowSet}"));
-        usersDataProvider2.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.usersRowSet1}"));
-        usersDataProvider3.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.usersRowSet1}"));
-    }
-    private CachedRowSetDataProvider usersDataProvider = new CachedRowSetDataProvider();
-
-    public CachedRowSetDataProvider getUsersDataProvider() {
-        return usersDataProvider;
-    }
-
-    public void setUsersDataProvider(CachedRowSetDataProvider crsdp) {
-        this.usersDataProvider = crsdp;
-    }
-    private ListDataProvider listDataProvider1 = new ListDataProvider();
-
-    public ListDataProvider getListDataProvider1() {
-        return listDataProvider1;
-    }
-
-    public void setListDataProvider1(ListDataProvider ldp) {
-        this.listDataProvider1 = ldp;
-    }
-    private CachedRowSetDataProvider usersDataProvider1 = new CachedRowSetDataProvider();
-
-    public CachedRowSetDataProvider getUsersDataProvider1() {
-        return usersDataProvider1;
-    }
-
-    public void setUsersDataProvider1(CachedRowSetDataProvider crsdp) {
-        this.usersDataProvider1 = crsdp;
-    }
-    private CachedRowSetDataProvider usersDataProvider2 = new CachedRowSetDataProvider();
-
-    public CachedRowSetDataProvider getUsersDataProvider2() {
-        return usersDataProvider2;
-    }
-
-    public void setUsersDataProvider2(CachedRowSetDataProvider crsdp) {
-        this.usersDataProvider2 = crsdp;
-    }
-    private CachedRowSetDataProvider usersDataProvider3 = new CachedRowSetDataProvider();
-
-    public CachedRowSetDataProvider getUsersDataProvider3() {
-        return usersDataProvider3;
-    }
-
-    public void setUsersDataProvider3(CachedRowSetDataProvider crsdp) {
-        this.usersDataProvider3 = crsdp;
     }
 
     // </editor-fold>
@@ -88,7 +36,7 @@ public class Home extends AbstractPageBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public Home() {
+    public Signup() {
     }
 
     /**
@@ -117,7 +65,7 @@ public class Home extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("Page1 Initialization Failure", e);
+            log("Signup Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -160,10 +108,15 @@ public class Home extends AbstractPageBean {
      */
     @Override
     public void destroy() {
-        usersDataProvider.close();
-        usersDataProvider1.close();
-        usersDataProvider2.close();
-        usersDataProvider3.close();
+    }
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
     }
 
     /**
@@ -184,13 +137,10 @@ public class Home extends AbstractPageBean {
         return (UserBean) getBean("UserBean");
     }
 
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected SessionBean1 getSessionBean1() {
-        return (SessionBean1) getBean("SessionBean1");
+    public String submit_button_action() {
+        User u = new User(this.getUserBean().getUsername(), this.getUserBean().getPassword());
+        u.save();
+        return null;
     }
     
 }

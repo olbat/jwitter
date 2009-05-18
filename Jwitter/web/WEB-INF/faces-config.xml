@@ -17,8 +17,8 @@
         <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>RequestBean1</managed-bean-name>
-        <managed-bean-class>jwitter.RequestBean1</managed-bean-class>
+        <managed-bean-name>UserBean</managed-bean-name>
+        <managed-bean-class>jwitter.UserBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <managed-bean>
@@ -34,6 +34,11 @@
     <managed-bean>
         <managed-bean-name>Footer</managed-bean-name>
         <managed-bean-class>jwitter.Footer</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Signup</managed-bean-name>
+        <managed-bean-class>jwitter.Signup</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
 </faces-config>

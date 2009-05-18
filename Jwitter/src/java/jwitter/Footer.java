@@ -83,8 +83,8 @@ public class Footer extends AbstractFragmentBean {
      *
      * @return reference to the scoped data bean
      */
-    protected RequestBean1 getRequestBean1() {
-        return (RequestBean1) getBean("RequestBean1");
+    protected UserBean getUserBean() {
+        return (UserBean) getBean("UserBean");
     }
 
     /**

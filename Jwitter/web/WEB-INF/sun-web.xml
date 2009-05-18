@@ -10,6 +10,10 @@
     <res-ref-name>jdbc/ROOT_ApacheDerby</res-ref-name>
     <jndi-name>jdbc/ROOT_ApacheDerby</jndi-name>
   </resource-ref>
+  <resource-ref>
+    <res-ref-name>jwitter</res-ref-name>
+    <jndi-name>jwitter</jndi-name>
+  </resource-ref>
   <class-loader delegate="true"/>
   <jsp-config>
     <property name="keepgenerated" value="true">

@@ -1,5 +1,5 @@
 /*
- * RequestBean1.java
+ * UserBean.java
  *
  * Created on 15 mai 2009, 15:44:01
  */
@@ -22,7 +22,10 @@ import javax.faces.FacesException;
  *
  * @author cygan0031
  */
-public class RequestBean1 extends AbstractRequestBean {
+public class UserBean extends AbstractRequestBean {
+    private String username;
+    private String password;
+
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -37,7 +40,7 @@ public class RequestBean1 extends AbstractRequestBean {
     /**
      * <p>Construct a new request data bean instance.</p>
      */
-    public RequestBean1() {
+    public UserBean() {
     }
 
     /**
@@ -103,6 +106,34 @@ public class RequestBean1 extends AbstractRequestBean {
      */
     protected ApplicationBean1 getApplicationBean1() {
         return (ApplicationBean1) getBean("ApplicationBean1");
+    }
+
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }
