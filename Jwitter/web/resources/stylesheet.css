@@ -73,7 +73,7 @@ html, body {
 
 body {
   font: small/150% Arial, Helvetica, Verdana, sans-serif;
-  background: url(hubert_cumberdale-background.png) bottom right no-repeat #9cdfe2;
+  background: url(hubert_cumberdale-background.png) no-repeat bottom right #9cdfe2;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -92,10 +92,21 @@ div#header {
   height: 80px;
 }
 
-div#header img {
+div#header img#headerquote {
     padding-right:8px;
     padding-top:2px;
     float:right;
+}
+
+div#header img#headerangel {
+    padding-left: 96px;
+    float:left;
+}
+
+div#header img#headerspoon {
+    padding-top:12px;
+    padding-right: 24px;
+    float:left;
 }
 
 div#header p.headerbubble {
@@ -125,7 +136,7 @@ div#header p.headerbubble.headerbubble2 {
 
 div#header h1 {
     margin: 0;
-    padding: 20px;
+    padding: 20px 4px 20px 20px;
     font-weight: normal;
     font-family: Arial;
     font-size: 12px;

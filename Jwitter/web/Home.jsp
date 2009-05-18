@@ -12,7 +12,8 @@
                 <webuijsf:head id="head1">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                 </webuijsf:head>
-                <webuijsf:body id="body1">
+                <jsp:declaration> String str = "hubert_cumberdale-background.png"; </jsp:declaration>
+                <webuijsf:body id="body1" style="background-image: url(#{str})no-repeat bottom right;">
                     <webuijsf:form id="form1">
                         <jsp:directive.include file="Header.jspf"/>
                         <div class="roundbox" id="page_content">

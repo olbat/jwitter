@@ -7,13 +7,12 @@
 <div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:f="http://java.sun.com/jsf/core" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
     <f:subview id="Header">
         <div id="header">
-            <img alt="hubert" src="resources/salad_fingers.png"/>
-            <p class="headerbubble headerbubble2"></p>
-            <p class="headerbubble headerbubble1"></p>
+            <img id="headerquote" src="resources/salad_fingers.png" alt="salad_fingers"/>
+            <p class="headerbubble headerbubble2"></p><p class="headerbubble headerbubble1"></p>
+
             <p class="headerbubble"><jsp:scriptlet>out.println(Quote.getRandomQuote());</jsp:scriptlet></p>
-            <h1>
-                <span>Jwitter</span>
-            </h1>
+            <h1><span>Jwitter</span></h1>
+            <img id="headerspoon" src="resources/spoon.png" alt="spoon"/>
             <p id="menu">
                 <webuijsf:hyperlink actionExpression="#{Header.link_login_action}" id="link_login" text="Signin"/>
                 <webuijsf:hyperlink actionExpression="#{Header.link_join_twitter_action}" id="link_join_twitter" text="Join Jwitter!" url="/faces/Signup.jsp"/>

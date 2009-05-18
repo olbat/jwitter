@@ -15,7 +15,9 @@ public class Quote {
         "Jwitting is a pleasure for the tips",
         "Jwitting procures pleasure",
         "Show me your tongue !",
-        "VisualWebJSF is a fucking crap !"};
+        "VisualWebJSF is a fucking crap !",
+        "Might I ask you where do you keep the SPOOOOONS ?",
+        "Hubert Cumberdale, you're tasting like soot and poo !"};
 
     public static String getRandomQuote() {
         return quotes[(int)(Math.random() * quotes.length)];
