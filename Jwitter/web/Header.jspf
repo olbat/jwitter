@@ -5,12 +5,12 @@
     Author     : cygan0031
 -->
 
-<div xmlns:f="http://java.sun.com/jsf/core" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:f="http://java.sun.com/jsf/core" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
     <f:subview id="Header">
         <div id="header">
             <img src="resources/salad_fingers.png" alt="hubert"/>
             <p class="headerbubble headerbubble2"></p><p class="headerbubble headerbubble1"></p>
-            <p class="headerbubble">I like to jwitt !</p>
+            <p class="headerbubble"><jsp:scriptlet>out.println(Quote.getRandomQuote());</jsp:scriptlet></p>
             
             <h1><span>Jwitter</span></h1>
             <p id="menu">
