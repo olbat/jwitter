@@ -6,11 +6,8 @@
  
 package jwitter;
 
-import com.sun.data.provider.impl.CachedRowSetDataProvider;
-import com.sun.data.provider.impl.ListDataProvider;
+
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.webui.jsf.model.DefaultTableDataProvider;
-import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
 import javax.faces.convert.IntegerConverter;
 
@@ -32,55 +29,6 @@ public class Home extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        usersDataProvider.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.usersRowSet}"));
-        usersDataProvider1.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.usersRowSet}"));
-        usersDataProvider2.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.usersRowSet1}"));
-        usersDataProvider3.setCachedRowSet((javax.sql.rowset.CachedRowSet) getValue("#{SessionBean1.usersRowSet1}"));
-    }
-    private CachedRowSetDataProvider usersDataProvider = new CachedRowSetDataProvider();
-
-    public CachedRowSetDataProvider getUsersDataProvider() {
-        return usersDataProvider;
-    }
-
-    public void setUsersDataProvider(CachedRowSetDataProvider crsdp) {
-        this.usersDataProvider = crsdp;
-    }
-    private ListDataProvider listDataProvider1 = new ListDataProvider();
-
-    public ListDataProvider getListDataProvider1() {
-        return listDataProvider1;
-    }
-
-    public void setListDataProvider1(ListDataProvider ldp) {
-        this.listDataProvider1 = ldp;
-    }
-    private CachedRowSetDataProvider usersDataProvider1 = new CachedRowSetDataProvider();
-
-    public CachedRowSetDataProvider getUsersDataProvider1() {
-        return usersDataProvider1;
-    }
-
-    public void setUsersDataProvider1(CachedRowSetDataProvider crsdp) {
-        this.usersDataProvider1 = crsdp;
-    }
-    private CachedRowSetDataProvider usersDataProvider2 = new CachedRowSetDataProvider();
-
-    public CachedRowSetDataProvider getUsersDataProvider2() {
-        return usersDataProvider2;
-    }
-
-    public void setUsersDataProvider2(CachedRowSetDataProvider crsdp) {
-        this.usersDataProvider2 = crsdp;
-    }
-    private CachedRowSetDataProvider usersDataProvider3 = new CachedRowSetDataProvider();
-
-    public CachedRowSetDataProvider getUsersDataProvider3() {
-        return usersDataProvider3;
-    }
-
-    public void setUsersDataProvider3(CachedRowSetDataProvider crsdp) {
-        this.usersDataProvider3 = crsdp;
     }
 
     // </editor-fold>
@@ -160,10 +108,6 @@ public class Home extends AbstractPageBean {
      */
     @Override
     public void destroy() {
-        usersDataProvider.close();
-        usersDataProvider1.close();
-        usersDataProvider2.close();
-        usersDataProvider3.close();
     }
 
     /**

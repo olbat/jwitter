@@ -7,14 +7,16 @@
 <div xmlns:f="http://java.sun.com/jsf/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
     <f:subview id="Header">
         <div id="header">
-            <img id="headerquote" src="resources/salad_fingers.png" alt="salad_fingers"/>
-            <p class="headerbubble headerbubble2"></p><p class="headerbubble headerbubble1"></p>
-
+            <img alt="salad_fingers" id="headerquote" src="resources/salad_fingers.png"/>
+            <p class="headerbubble headerbubble2"></p>
+            <p class="headerbubble headerbubble1"></p>
             <p class="headerbubble">
                 <jsp:scriptlet>out.println(Quote.getRandomQuote());</jsp:scriptlet>
             </p>
-            <h1><span>Jwitter</span></h1>
-            <img id="headerspoon" src="resources/spoon.png" alt="spoon"/>
+            <h1>
+                <span>Jwitter</span>
+            </h1>
+            <img alt="spoon" id="headerspoon" src="resources/spoon.png"/>
             <p id="menu">
                 <webuijsf:hyperlink actionExpression="#{Header.link_home_action}" id="link_home" text="Home"/>
                 <jsp:scriptlet>if(request.getSession().getAttribute("user") == null) {</jsp:scriptlet>
@@ -24,6 +26,9 @@
                 <webuijsf:hyperlink actionExpression="#{Header.link_profile_action}" id="link_profile" text="Profile"/>
                 <webuijsf:hyperlink actionExpression="#{Header.link_settings_action}" id="link_settings" text="Settings"/>
                 <webuijsf:hyperlink actionExpression="#{Header.link_signout_action}" id="link_signout" text="Signout"/>
+                <jsp:scriptlet>if(((User)request.getSession().getAttribute("user")).isAdmin()) {</jsp:scriptlet>
+                <webuijsf:hyperlink actionExpression="#{Header.link_admin_action}" id="link_admin" text="Admin" url="/faces/Admin.jsp"/>
+                <jsp:scriptlet>}</jsp:scriptlet>
                 <jsp:scriptlet>}</jsp:scriptlet>
             </p>
         </div>

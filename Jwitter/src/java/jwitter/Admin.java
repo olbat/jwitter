@@ -6,8 +6,8 @@
 package jwitter;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.component.Hyperlink;
 import javax.faces.FacesException;
-import javax.faces.validator.LengthValidator;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -16,12 +16,12 @@ import javax.faces.validator.LengthValidator;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version Signup.java
- * @version Created on 18 mai 2009, 12:19:02
+ * @version Admin.java
+ * @version Created on 18 mai 2009, 17:51:41
  * @author cygan0031
  */
 
-public class Signup extends AbstractPageBean {
+public class Admin extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -31,13 +31,22 @@ public class Signup extends AbstractPageBean {
      */
     private void _init() throws Exception {
     }
-    
+    private Hyperlink hyperlink1 = new Hyperlink();
+
+    public Hyperlink getHyperlink1() {
+        return hyperlink1;
+    }
+
+    public void setHyperlink1(Hyperlink h) {
+        this.hyperlink1 = h;
+    }
+
     // </editor-fold>
 
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public Signup() {
+    public Admin() {
     }
 
     /**
@@ -66,7 +75,7 @@ public class Signup extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("Signup Initialization Failure", e);
+            log("Admin Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -97,6 +106,7 @@ public class Signup extends AbstractPageBean {
      */
     @Override
     public void prerender() {
+        this.getRequestMap().put("users", User.getAll());
     }
 
     /**
@@ -116,15 +126,6 @@ public class Signup extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected SessionBean1 getSessionBean1() {
-        return (SessionBean1) getBean("SessionBean1");
-    }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
     protected ApplicationBean1 getApplicationBean1() {
         return (ApplicationBean1) getBean("ApplicationBean1");
     }
@@ -134,21 +135,17 @@ public class Signup extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected UserBean getUserBean() {
-        return (UserBean) getBean("UserBean");
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
     }
 
-    public String submit_button_action() {
-        User u = new User(this.getUserBean().getUsername(), this.getUserBean().getPassword());
-
-        if(u.populate()) {
-                this.getSessionMap().put("message_error", u.getUsername() + " is already taken.");
-                return null;
-        }
-
-        boolean saved = u.save();
-        this.getSessionMap().put("message_valid", "You're successfully a rusty spoon lover!");
-        return saved ? "signup_valid" : null;
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected UserBean getUserBean() {
+        return (UserBean) getBean("UserBean");
     }
     
 }

@@ -211,3 +211,42 @@ div.flash_message.error {
 div.flash_message.notice {
     color: #555;
 }
+
+textarea#content {
+    width: 90%;
+}
+
+/* tables */
+
+table.stylish {
+  width: 100%;
+}
+
+table.stylish tr td, div#page table th {
+  padding: 0.1em 0.3em;
+}
+
+table.stylish tr:hover td, div#page table tr.odd:hover td {
+  background-color: #fff999;
+}
+
+table.stylish.no_effect tr:hover td, div#page table.no_effect tr.odd:hover td {
+  background-color: transparent;
+}
+
+table.stylish tr.odd td {
+  background-color: #f0f0f0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+table.stylish tr td.num {
+  font-weight: bold;
+  width: 1px;
+}
+
+table.stylish th {
+  text-align: left;
+  background-color: #9cdfe2;
+  border-bottom: 1px solid #74b4c0;
+}

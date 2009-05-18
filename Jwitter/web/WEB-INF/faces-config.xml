@@ -71,4 +71,9 @@
             <to-view-id>/Home.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>Admin</managed-bean-name>
+        <managed-bean-class>jwitter.Admin</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

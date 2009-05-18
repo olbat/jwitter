@@ -6,6 +6,7 @@
 package jwitter;
 
 import java.sql.Connection;
+import java.util.Collection;
 
 public class User {
     private int id;
@@ -13,7 +14,15 @@ public class User {
     private String password;
     private int rank;
     public final static int RANK_USER = 0;
-    public final static int RANK_ADMIN = 0;
+    public final static int RANK_ADMIN = 1;
+
+    public boolean isAdmin() {
+        return this.rank == User.RANK_ADMIN;
+    }
+
+    public boolean isUser() {
+        return this.rank == User.RANK_USER;
+    }
 
     public User(String username, String password) {
         this(username, password, User.RANK_USER);
@@ -50,8 +59,8 @@ public class User {
         this.rank = rank;
     }
 
-    public int getId() {
-        return this.id;
+    public String getId() {
+        return this.id + "";
     }
 
     public void setId(int id) {
@@ -77,5 +86,10 @@ public class User {
         } else {
             return false;
         }
+    }
+
+    public static Collection getAll() {
+        UserDAO udao = new UserDAO();
+        return udao.allUsers();
     }
 }

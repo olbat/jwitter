@@ -36,6 +36,7 @@ public class UserDAO {
             String s = "INSERT INTO APP.USERS (USERNAME, PASSWORD, RANK) VALUES ('" + u.getUsername() + "', '" + u.getPassword() + "', " + u.getRank() + ")";
             PreparedStatement ps = connection.prepareStatement(s);
             ps.execute();
+            ps.close();
             return true;
         } catch (SQLException ex) {
             ex.getMessage();
@@ -49,6 +50,7 @@ public class UserDAO {
             String s = "DELETE FROM APP.USERS WHERE login = '" + u.getUsername() + "'";
             PreparedStatement ps = connection.prepareStatement(s);
             ps.execute();
+            ps.close();
             return true;
         } catch (SQLException ex) {
             ex.getMessage();
@@ -64,13 +66,16 @@ public class UserDAO {
             ps.execute();
             ArrayList<User> al = new ArrayList<User>();
             ResultSet rs = ps.getResultSet();
-            
+
             if(rs.next()) {
                 User u = new User(rs.getString("username"), rs.getString("password"));
                 u.setRank(Integer.parseInt(rs.getString("rank")));
                 u.setId(Integer.parseInt(rs.getString("id")));
                 return u;
             }
+
+            rs.close();
+            ps.close();
             return null;
         } catch (SQLException ex) {
             ex.getMessage();
@@ -91,8 +96,15 @@ public class UserDAO {
             ps.execute();
             ArrayList<User> al = new ArrayList<User>();
             ResultSet rs = ps.getResultSet();
-            while(rs.next())
-                al.add(new User(rs.getString("login"), rs.getString("password")));
+            while(rs.next()) {
+                User u = new User(rs.getString("username"), rs.getString("password"));
+                u.setRank(Integer.parseInt(rs.getString("rank")));
+                u.setId(Integer.parseInt(rs.getString("id")));
+                al.add(u);
+            }
+
+            rs.close();
+            ps.close();
             return al;
         } catch (SQLException ex) {
             ex.getMessage();
