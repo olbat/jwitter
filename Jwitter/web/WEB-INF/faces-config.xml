@@ -87,4 +87,21 @@
             <to-view-id>/Home.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>MessageBean</managed-bean-name>
+        <managed-bean-class>jwitter.MessageBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Profile</managed-bean-name>
+        <managed-bean-class>jwitter.Profile</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/Profile.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>signout</from-outcome>
+            <to-view-id>/Home.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

@@ -18,14 +18,15 @@ public class Quote {
         "VisualWebJSF is a fucking crap !",
         "Might I ask you where do you keep the SPOOOOONS ?",
         "Hubert Cumberdale you taste like soot and poo !",
-        "I thought you were out fighting the great war",
+        "I thought you were out there fighting the great war",
         "JSP Owns! Erm, or not ...",
         "I'm ugly",
         "I like rusty spoons",
         "The feeling of rust ... is almost orgasmic.",
         "Hello there little child",
         "I'm here to enquire about your spoons",
-        "I wonder what you taste like"};
+        "I wonder what you taste like",
+        "You have a quite welcoming texture"};
 
     public static String getRandomQuote() {
         return quotes[(int)(Math.random() * quotes.length)];

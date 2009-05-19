@@ -12,6 +12,7 @@ CREATE TABLE messages (
     user_id INT NOT NULL DEFAULT 0,
     privacy INT NOT NULL DEFAULT 0,
     friend_id INT NOT NULL DEFAULT 0,
+    created TIMESTAMP NOT NULL,
     PRIMARY KEY(id)
 );
 

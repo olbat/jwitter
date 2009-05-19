@@ -4,6 +4,7 @@
     <Scope Scope="Project">
         <Node id="Signup.jsp" x="549" y="234" zoom="false"/>
         <Node id="Home.jsp" x="132" y="364" zoom="false"/>
+        <Node id="Profile.jsp" x="426" y="447" zoom="false"/>
         <Node id="Signin.jsp" x="118" y="11" zoom="false"/>
         <Node id="Admin.jsp" x="397" y="25" zoom="false"/>
     </Scope>

@@ -14,10 +14,8 @@ import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
-/**
- *
- * @author cygan0031
- */
+
+
 public class UserDAO {
     private static Connection connection;
 

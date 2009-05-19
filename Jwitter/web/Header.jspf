@@ -20,8 +20,7 @@
                 <webuijsf:hyperlink actionExpression="#{Header.link_login_action}" id="link_login" text="Signin" url="/faces/Signin.jsp"/>
                 <webuijsf:hyperlink actionExpression="#{Header.link_join_twitter_action}" id="link_join_twitter" text="Join Jwitter!" url="/faces/Signup.jsp"/>
                 <jsp:scriptlet>} else {</jsp:scriptlet>
-                <webuijsf:hyperlink actionExpression="#{Header.link_profile_action}" id="link_profile" text="Profile" url="/faces/Profile.jsp"/>
-                <webuijsf:hyperlink actionExpression="#{Header.link_settings_action}" id="link_settings" text="Settings" url="/faces/Settings.jsp"/>
+                <webuijsf:hyperlink actionExpression="#{Header.link_profile_action}" id="link_profile" text="Profile" url="/faces/Profile.jsp?id=#{user.id}"/>
                 <webuijsf:hyperlink actionExpression="#{Header.link_signout_action}" id="link_signout" text="Signout" />
                 <jsp:scriptlet>if(((User)request.getSession().getAttribute("user")).isAdmin()) {</jsp:scriptlet>
                 <webuijsf:hyperlink actionExpression="#{Header.link_admin_action}" id="link_admin" text="Admin" url="/faces/Admin.jsp"/>

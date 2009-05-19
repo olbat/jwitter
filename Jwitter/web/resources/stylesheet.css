@@ -256,3 +256,16 @@ table.stylish th {
   background-color: #9cdfe2;
   border-bottom: 1px solid #74b4c0;
 }
+
+/* messages */
+
+p.message {
+    font-size: 1.15em;
+    border-bottom: 1px solid #ccc;
+}
+
+p.message span.notimportant {
+    font-style: italic;
+    color: #888;
+    font-size: 0.8em;
+}

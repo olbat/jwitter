@@ -1,14 +1,11 @@
 /*
- * Home.java
- *
- * Created on 15 mai 2009, 16:26:30
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
  */
- 
+
 package jwitter;
 
-
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
 
 /**
@@ -18,9 +15,12 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @author cygan0031
+ * @version Profile.java
+ * @version Created on May 19, 2009, 3:11:31 AM
+ * @author jessy
  */
-public class Home extends AbstractPageBean {
+
+public class Profile extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -29,16 +29,6 @@ public class Home extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        dropDown1DefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("public", "public"), new com.sun.webui.jsf.model.Option("private", "private"), new com.sun.webui.jsf.model.Option("1", "@jessy")});
-    }
-    private SingleSelectOptionsList dropDown1DefaultOptions = new SingleSelectOptionsList();
-
-    public SingleSelectOptionsList getDropDown1DefaultOptions() {
-        return dropDown1DefaultOptions;
-    }
-
-    public void setDropDown1DefaultOptions(SingleSelectOptionsList ssol) {
-        this.dropDown1DefaultOptions = ssol;
     }
 
     // </editor-fold>
@@ -46,7 +36,7 @@ public class Home extends AbstractPageBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public Home() {
+    public Profile() {
     }
 
     /**
@@ -75,7 +65,7 @@ public class Home extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("Page1 Initialization Failure", e);
+            log("Profile Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -106,14 +96,14 @@ public class Home extends AbstractPageBean {
      */
     @Override
     public void prerender() {
-        if(this.getSessionMap().get("user") == null) {
-            this.getRequestMap().put("messages", Message.getAllPublic());
+        User u = new User(Integer.parseInt(this.getFacesContext().getExternalContext().getRequestParameterMap().get("id")));
+        u.populate();
+        this.getRequestMap().put("currentuser", u);
+
+        if(this.getSessionMap().get("user") != null && (((User)this.getSessionMap().get("user")).getId().compareTo(u.getId()) == 0 || ((User)this.getSessionMap().get("user")).isAdmin())) {
+            this.getRequestMap().put("messages", Message.getFromUserAll(u));
         } else {
-            if(((User)this.getSessionMap().get("user")).isAdmin()) {
-                this.getRequestMap().put("messages", Message.getAll());
-            } else {
-                this.getRequestMap().put("messages", Message.getAllForUser((User)this.getSessionMap().get("user")));
-            }
+            this.getRequestMap().put("messages", Message.getFromUserPublic(u));
         }
     }
 
@@ -134,8 +124,8 @@ public class Home extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected ApplicationBean1 getApplicationBean1() {
-        return (ApplicationBean1) getBean("ApplicationBean1");
+    protected UserBean getUserBean() {
+        return (UserBean) getBean("UserBean");
     }
 
     /**
@@ -152,39 +142,27 @@ public class Home extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
+    protected ApplicationBean1 getApplicationBean1() {
+        return (ApplicationBean1) getBean("ApplicationBean1");
+    }
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
     protected SessionBean1 getSessionBean1() {
         return (SessionBean1) getBean("SessionBean1");
     }
 
-    public String link_delete_action() {
-        Message m = new Message(Integer.parseInt(this.getFacesContext().getExternalContext().getRequestParameterMap().get("id")));
-
-        if(m.delete())
-            this.getSessionMap().put("message_valid", "Message deleted!");
-
+    public String link_profile_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
         return null;
     }
 
-    public String button_update_action() {
-        Message m = new Message();
-        m.setUser_id(Integer.parseInt(((User)this.getSessionMap().get("user")).getId()));
-        m.setContent(this.getMessageBean().getContent());
-        String selected = (String)this.getMessageBean().getScope();
-
-        if(selected == null) {
-            this.getSessionMap().put("message_error", "You need to select the scope");
-        } else if(selected.compareTo("public") == 0) {
-            m.setPrivacy(Message.PRIVACY_PUBLIC);
-        } else if(selected.compareTo("private") == 0) {
-            m.setPrivacy(Message.PRIVACY_PRIVATE);
-        } else {
-            m.setPrivacy(Message.PRIVACY_DIRECT);
-            m.setFriend_id(Integer.parseInt(selected));
-        }
-
-        if(m.save())
-            this.getSessionMap().put("message_valid", "You jwitted successfully!");
-
+    public String link_delete_action() {
+        // TODO: Replace with your code
         return null;
     }
     
