@@ -77,7 +77,14 @@ public class User {
 
     public boolean populate() {
         UserDAO udao = new UserDAO();
-        User u = udao.findUser(this.username);
+        User u;
+        if(this.id == 0) {
+            u = udao.findUser(this.username);
+        } else {
+            u = udao.findUser(this.id);
+        }
+            
+        
         if(u != null) {
             this.id = u.id;
             this.username = u.username;

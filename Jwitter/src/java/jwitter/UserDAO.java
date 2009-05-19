@@ -96,7 +96,34 @@ public class UserDAO {
             ps.execute();
             ArrayList<User> al = new ArrayList<User>();
             ResultSet rs = ps.getResultSet();
+            if(rs.next()) {
+                User u = new User(rs.getString("username"), rs.getString("password"));
+                u.setRank(Integer.parseInt(rs.getString("rank")));
+                u.setId(Integer.parseInt(rs.getString("id")));
+                return u;
+            }
 
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            ex.getMessage();
+            ex.printStackTrace();
+        }
+        try {
+            UserDAO.connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public User findUser(int id) {
+        try {
+            String s = "SELECT * FROM APP.USERS WHERE id = " + id;
+            PreparedStatement ps = connection.prepareStatement(s);
+            ps.execute();
+            ArrayList<User> al = new ArrayList<User>();
+            ResultSet rs = ps.getResultSet();
             if(rs.next()) {
                 User u = new User(rs.getString("username"), rs.getString("password"));
                 u.setRank(Integer.parseInt(rs.getString("rank")));

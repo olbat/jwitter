@@ -17,7 +17,7 @@
                     <webuijsf:form id="Formulaire">
                         <jsp:directive.include file="Header.jspf"/>
                         <div class="roundbox" id="page_content">
-                            <h2>Profile : <webuijsf:hyperlink actionExpression="#{Header.link_profile2_action}" id="link_profile2" text="#{currentuser.username}" url="/faces/Profile.jsp?id=#{currentuser.id}"/>
+                            <h2>Profile : <webuijsf:hyperlink id="link_profile2" text="#{currentuser.username}" url="/faces/Profile.jsp?id=#{currentuser.id}"/>
                             </h2>
                             <c:forEach items="#{messages}" var="m">
                                 <p class="message">
@@ -26,7 +26,7 @@
                                     </c:if>
                                     <jsp:text> </jsp:text>
                                     <strong>
-                                        <webuijsf:hyperlink actionExpression="#{Profile.link_profile_action}" id="link_profile" text="#{m.username}" url="Profile.jsp?id=#{m.user_id}"/>
+                                        <webuijsf:hyperlink actionExpression="#{Profile.link_profile_action}" id="link_profile" text="#{m.username}" url="/faces/Profile.jsp?id=#{m.user_id}"/>
                                     </strong>
                                     <jsp:text> </jsp:text>
                                     <c:out value="${m.content}"/>

@@ -27,7 +27,7 @@
                                     <br/>
                                     <webuijsf:textArea columns="100" id="content" style="font-size: 15px;" text="#{MessageBean.content}"/>
                                 </div>
-                                <webuijsf:button actionExpression="#{Home.button_update_action}" id="button_update" style="padding: 5px;" text="update"/>
+                                <webuijsf:button actionExpression="#{Home.button_update_action}" id="button_update" style="padding: 5px;" text="jwitt it!"/>
                             </div>
                             <jsp:scriptlet>}</jsp:scriptlet>
 
@@ -37,7 +37,7 @@
                                     [DM]
                                     </c:if>
                                     <jsp:text> </jsp:text>
-                                    <strong><webuijsf:hyperlink id="link_profile" text="#{m.username}" url="Profile.jsp?id=#{m.user_id}"/></strong>
+                                    <strong><webuijsf:hyperlink id="link_profile" text="#{m.username}" url="/faces/Profile.jsp?id=#{m.user_id}"/></strong>
                                     <jsp:text> </jsp:text>
                                     <c:out value="${m.content}"/>
                                     <jsp:text> </jsp:text>

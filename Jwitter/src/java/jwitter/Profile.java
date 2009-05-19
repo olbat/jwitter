@@ -98,6 +98,7 @@ public class Profile extends AbstractPageBean {
     public void prerender() {
         User u = new User(Integer.parseInt(this.getFacesContext().getExternalContext().getRequestParameterMap().get("id")));
         u.populate();
+        System.out.println("user : " + u.getUsername() + " " + u.getId());
         this.getRequestMap().put("currentuser", u);
 
         if(this.getSessionMap().get("user") != null && (((User)this.getSessionMap().get("user")).getId().compareTo(u.getId()) == 0 || ((User)this.getSessionMap().get("user")).isAdmin())) {
