@@ -35,7 +35,8 @@
                                             <jsp:scriptlet>out.println(i++);</jsp:scriptlet>
                                         </td>
                                         <td>
-                                            <c:out value="${u.username}"/>
+                                            <webuijsf:hyperlink actionExpression="#{Profile.link_profile_action}" id="link_profile"
+                                    text="#{u.username}" url="/faces/Profile.jsp?id=#{u.id}"/>
                                         </td>
                                         <td>
                                             <c:if test="${u.rank == 0}">

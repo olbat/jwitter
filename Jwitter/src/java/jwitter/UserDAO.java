@@ -49,6 +49,46 @@ public class UserDAO {
         }
     }
 
+    public boolean followUser(int user_id, int followed_id) {
+        try {
+            String s = "INSERT INTO APP.FOLLOWERS (USER_ID, FOLLOWER_ID) VALUES (" + followed_id + ", " + user_id + ")";
+            PreparedStatement ps = connection.prepareStatement(s);
+            ps.execute();
+            ps.close();
+            UserDAO.connection.close();
+            return true;
+        } catch (SQLException ex) {
+            ex.getMessage();
+            ex.printStackTrace();
+            try {
+                UserDAO.connection.close();
+            } catch (SQLException ex1) {
+                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            return false;
+        }
+    }
+
+    public boolean deleteFollow(int user_id, int followed_id) {
+        try {
+            String s = "DELETE FROM APP.FOLLOWERS WHERE user_id = " + followed_id + " AND follower_id = " + user_id;
+            PreparedStatement ps = connection.prepareStatement(s);
+            ps.execute();
+            ps.close();
+            UserDAO.connection.close();
+            return true;
+        } catch (SQLException ex) {
+            ex.getMessage();
+            ex.printStackTrace();
+            try {
+                UserDAO.connection.close();
+            } catch (SQLException ex1) {
+                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            return false;
+        }
+    }
+
     public boolean deleteUser(User u) {
         try {
             String s = "DELETE FROM APP.USERS WHERE id = " + u.getId();
@@ -143,6 +183,66 @@ public class UserDAO {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public Collection getFollowersUsers(int user_id) {
+        try {
+            String s = "SELECT * FROM APP.USERS, APP.FOLLOWERS WHERE USERS.id = follower_id AND user_id = " + user_id;
+            PreparedStatement ps = connection.prepareStatement(s);
+            ps.execute();
+            ArrayList<User> al = new ArrayList<User>();
+            ResultSet rs = ps.getResultSet();
+            while(rs.next()) {
+                User u = new User(rs.getString("username"), rs.getString("password"));
+                u.setRank(Integer.parseInt(rs.getString("rank")));
+                u.setId(Integer.parseInt(rs.getString("id")));
+                al.add(u);
+            }
+
+            rs.close();
+            ps.close();
+            UserDAO.connection.close();
+            return al;
+        } catch (SQLException ex) {
+            ex.getMessage();
+            ex.printStackTrace();
+            try {
+                UserDAO.connection.close();
+            } catch (SQLException ex1) {
+                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            return null;
+        }
+    }
+
+    public Collection getFollowingUsers(int follower_id) {
+        try {
+            String s = "SELECT * FROM APP.USERS, APP.FOLLOWERS WHERE USERS.id = user_id AND follower_id = " + follower_id;
+            PreparedStatement ps = connection.prepareStatement(s);
+            ps.execute();
+            ArrayList<User> al = new ArrayList<User>();
+            ResultSet rs = ps.getResultSet();
+            while(rs.next()) {
+                User u = new User(rs.getString("username"), rs.getString("password"));
+                u.setRank(Integer.parseInt(rs.getString("rank")));
+                u.setId(Integer.parseInt(rs.getString("id")));
+                al.add(u);
+            }
+
+            rs.close();
+            ps.close();
+            UserDAO.connection.close();
+            return al;
+        } catch (SQLException ex) {
+            ex.getMessage();
+            ex.printStackTrace();
+            try {
+                UserDAO.connection.close();
+            } catch (SQLException ex1) {
+                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            return null;
+        }
     }
     
     public Collection allUsers() {

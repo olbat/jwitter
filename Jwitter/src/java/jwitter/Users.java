@@ -6,7 +6,6 @@
 package jwitter;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import java.util.Collection;
 import javax.faces.FacesException;
 
 /**
@@ -16,12 +15,12 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version Profile.java
- * @version Created on May 19, 2009, 3:11:31 AM
+ * @version Users.java
+ * @version Created on May 19, 2009, 12:15:53 PM
  * @author jessy
  */
 
-public class Profile extends AbstractPageBean {
+public class Users extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -37,7 +36,7 @@ public class Profile extends AbstractPageBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public Profile() {
+    public Users() {
     }
 
     /**
@@ -66,7 +65,7 @@ public class Profile extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("Profile Initialization Failure", e);
+            log("Users Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -97,36 +96,7 @@ public class Profile extends AbstractPageBean {
      */
     @Override
     public void prerender() {
-        if(this.getFacesContext().getExternalContext().getRequestParameterMap().get("id") != null) {
-            User u = new User(Integer.parseInt(this.getFacesContext().getExternalContext().getRequestParameterMap().get("id")));
-            u.populate();
-            System.out.println("user : " + u.getUsername() + " " + u.getId());
-            this.getRequestMap().put("currentuser", u);
-
-            if(this.getSessionMap().get("user") != null && (((User)this.getSessionMap().get("user")).getId().compareTo(u.getId()) == 0 || ((User)this.getSessionMap().get("user")).isAdmin())) {
-                this.getRequestMap().put("messages", Message.getFromUserAll(u));
-            } else {
-                this.getRequestMap().put("messages", Message.getFromUserPublic(u));
-            }
-
-            this.getRequestMap().put("following", u.getFollowing());
-            Collection followers = u.getFollowers();
-            this.getRequestMap().put("followers", followers);
-            int id = -1;
-            if(this.getSessionMap().get("user") != null)
-                id = Integer.parseInt(((User)this.getSessionMap().get("user")).getId());
-            
-            if(id != -1) {
-                for(Object o : followers) {
-                    if(Integer.parseInt(((User)o).getId()) == id) {
-                        id = -2;
-                        break;
-                    }
-                }
-            }
-
-            this.getSessionMap().put("is_following", id == -2);
-        }
+                this.getRequestMap().put("users", User.getAll());
     }
 
     /**
@@ -146,8 +116,8 @@ public class Profile extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected UserBean getUserBean() {
-        return (UserBean) getBean("UserBean");
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
     }
 
     /**
@@ -164,8 +134,8 @@ public class Profile extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected ApplicationBean1 getApplicationBean1() {
-        return (ApplicationBean1) getBean("ApplicationBean1");
+    protected UserBean getUserBean() {
+        return (UserBean) getBean("UserBean");
     }
 
     /**
@@ -173,36 +143,8 @@ public class Profile extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected SessionBean1 getSessionBean1() {
-        return (SessionBean1) getBean("SessionBean1");
-    }
-
-    public String link_profile_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return null;
-    }
-
-    public String link_profile2_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return null;
-    }
-
-    public String link_follow_action() {
-        if(((User)this.getSessionMap().get("user")).follow(Integer.parseInt(this.getFacesContext().getExternalContext().getRequestParameterMap().get("id")))) {
-            this.getSessionMap().put("message_valid", "You are now following him!");
-        }
-
-        return null;
-    }
-
-    public String link_delete_follow_action() {
-        if(((User)this.getSessionMap().get("user")).deleteFollow(Integer.parseInt(this.getFacesContext().getExternalContext().getRequestParameterMap().get("id")))) {
-            this.getSessionMap().put("message_valid", "You are no longer following him!");
-        }
-
-        return null;
+    protected ApplicationBean1 getApplicationBean1() {
+        return (ApplicationBean1) getBean("ApplicationBean1");
     }
     
 }

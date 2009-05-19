@@ -17,7 +17,21 @@
                     <webuijsf:form id="Formulaire">
                         <jsp:directive.include file="Header.jspf"/>
                         <div class="roundbox" id="page_content">
-                            <h2>Profile : <webuijsf:hyperlink id="link_profile2" text="#{currentuser.username}" url="/faces/Profile.jsp?id=#{currentuser.id}"/>
+                            <h2>Profile : <webuijsf:hyperlink actionExpression="#{Profile.link_profile2_action}" id="link_profile2"
+                                    text="#{currentuser.username}" url="/faces/Profile.jsp?id=#{currentuser.id}"/>
+                                <br />
+                                <c:if test="${user != null and currentuser.id != user.id}">
+                                    <c:if test="${is_following}">
+                                        <webuijsf:hyperlink actionExpression="#{Profile.link_delete_follow_action}" id="link_delete_follow" text="remove follow">
+                                        <f:param name="id" value="#{currentuser.id}"/>
+                                        </webuijsf:hyperlink>
+                                    </c:if>
+                                    <c:if test="${!is_following}">
+                                        <webuijsf:hyperlink actionExpression="#{Profile.link_follow_action}" id="link_follow" text="follow">
+                                        <f:param name="id" value="#{currentuser.id}"/>
+                                        </webuijsf:hyperlink>
+                                    </c:if>
+                                </c:if>
                             </h2>
                             <c:forEach items="#{messages}" var="m">
                                 <p class="message">
@@ -26,22 +40,59 @@
                                     </c:if>
                                     <jsp:text> </jsp:text>
                                     <strong>
-                                        <webuijsf:hyperlink actionExpression="#{Profile.link_profile_action}" id="link_profile" text="#{m.username}" url="/faces/Profile.jsp?id=#{m.user_id}"/>
+                                        <webuijsf:hyperlink actionExpression="#{Profile.link_profile6_action}" id="link_profile6" text="#{m.username}" url="/faces/Profile.jsp?id=#{m.user_id}"/>
                                     </strong>
                                     <jsp:text> </jsp:text>
                                     <c:out value="${m.content}"/>
                                     <jsp:text> </jsp:text>
                                     <br/>
-                                    <span class="notimportant">(<c:out value="${m.created}"/>)
-                                    <c:if test="${user != null and m.user_id == user.id or user != null and user.rank == 1}">
-                                            <jsp:text> </jsp:text>
-                                            <webuijsf:hyperlink actionExpression="#{Profile.link_delete_action}" id="link_delete" text="delete">
-                                                <f:param name="id" value="#{m.id}"/>
-                                            </webuijsf:hyperlink>
-                                        </c:if>
-                                    </span>
+                                    <span class="notimportant">(<c:out value="${m.created}"/>)</span>
                                 </p>
                             </c:forEach>
+                            <br />
+                            <div style="width: 48%;">
+                                <h3>Following</h3>
+                                <table class="stylish">
+                                <tr>
+                                    <th class="num">#</th>
+                                    <th>Username</th>
+                                </tr>
+                                <jsp:scriptlet>int i = 1;</jsp:scriptlet>
+                                <c:forEach items="#{following}" var="u">
+                                    <tr>
+                                        <td class="num">
+                                            <jsp:scriptlet>out.println(i++);</jsp:scriptlet>
+                                        </td>
+                                        <td>
+                                            <webuijsf:hyperlink actionExpression="#{Profile.link_profile3_action}" id="link_profile3"
+                                    text="#{u.username}" url="/faces/Profile.jsp?id=#{u.id}"/>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                            </div>
+                            <br />
+                            <div style="width: 48%;">
+                                <h3>Followers</h3>
+                                <table class="stylish">
+                                <tr>
+                                    <th class="num">#</th>
+                                    <th>Username</th>
+                                </tr>
+                                <jsp:scriptlet>i = 1;</jsp:scriptlet>
+                                <c:forEach items="#{followers}" var="u">
+                                    <tr>
+                                        <td class="num">
+                                            <jsp:scriptlet>out.println(i++);</jsp:scriptlet>
+                                        </td>
+                                        <td>
+                                            <webuijsf:hyperlink actionExpression="#{Profile.link_profile4_action}" id="link_profile4"
+                                    text="#{u.username}" url="/faces/Profile.jsp?id=#{u.id}"/>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                            </div>
                         </div>
                         <jsp:directive.include file="Footer.jspf"/>
                     </webuijsf:form>

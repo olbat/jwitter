@@ -16,6 +16,16 @@ public class User {
     public final static int RANK_USER = 0;
     public final static int RANK_ADMIN = 1;
 
+    public boolean follow(int followed_id) {
+        UserDAO udao = new UserDAO();
+        return udao.followUser(this.id, followed_id);
+    }
+
+    public boolean deleteFollow(int followed_id) {
+        UserDAO udao = new UserDAO();
+        return udao.deleteFollow(this.id, followed_id);
+    }
+
     public String rankToString() {
         return this.isAdmin() ? "admin" : "user";
     }
@@ -116,6 +126,16 @@ public class User {
         } else {
             return false;
         }
+    }
+
+    public Collection getFollowing() {
+        UserDAO udao = new UserDAO();
+        return udao.getFollowingUsers(this.id);
+    }
+
+    public Collection getFollowers() {
+        UserDAO udao = new UserDAO();
+        return udao.getFollowersUsers(this.id);
     }
 
     public static Collection getAll() {

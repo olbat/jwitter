@@ -26,6 +26,7 @@
                 <webuijsf:hyperlink actionExpression="#{Header.link_admin_action}" id="link_admin" text="Admin" url="/faces/Admin.jsp"/>
                 <jsp:scriptlet>}</jsp:scriptlet>
                 <jsp:scriptlet>}</jsp:scriptlet>
+                <webuijsf:hyperlink actionExpression="#{Header.link_users_action}" id="link_users" text="Users" url="/faces/Users.jsp"/>
             </p>
         </div>
         <div>

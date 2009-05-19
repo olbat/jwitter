@@ -10,6 +10,8 @@ package jwitter;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
+import com.sun.webui.jsf.model.Option;
+import java.util.Collection;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -29,7 +31,30 @@ public class Home extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        dropDown1DefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("public", "public"), new com.sun.webui.jsf.model.Option("private", "private"), new com.sun.webui.jsf.model.Option("1", "@jessy")});
+        int size = 2;
+        Collection following = null;
+        Option[] options = null;
+
+        if(this.getSessionMap().get("user") != null) {
+            following = ((User)this.getSessionMap().get("user")).getFollowing();
+        }
+
+        if(following != null && following.size() > 0) {
+            size += following.size();
+        }
+
+        options = new Option[size];
+        options[0] = new Option("public", "public");
+        options[1] = new Option("private", "private");
+        int i = 2;
+
+        if(following != null) {
+            for(Object o : following) {
+                options[i++] = new Option(((User)o).getId(), "@" + ((User)o).getUsername());
+            }
+        }
+        
+        dropDown1DefaultOptions.setOptions(options);
     }
     private SingleSelectOptionsList dropDown1DefaultOptions = new SingleSelectOptionsList();
 
